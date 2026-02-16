@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>고든테의 AI 캐비넷</title>
+    <meta name="description" content="AI 크리에이터를 위한 공모전/도구 디렉토리" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="홈으로 이동">
+          <span class="logo">🕊</span>
+          <span class="brand-copy">
+            <strong>고든테의 AI 캐비넷</strong>
+            <small>상상 속에 새로운 가치를</small>
+          </span>
+        </a>
+        <nav class="top-nav">
+          <button class="top-link active" data-page="home">홈</button>
+          <button class="top-link" data-page="contests">공모전</button>
+          <button class="top-link" data-page="tools">AI 도구</button>
+          <button class="top-link" data-page="about">About&Spport</button>
+        </nav>
+      </header>
+
+      <main>
+        <section id="homePage" class="page-section active">
+          <h1>AI 크리에이터를 위한<br />모든 정보가 여기에.</h1>
+          <p class="sub">최신 AI 공모전부터 핫한 생성형 AI 도구 사용법까지, 고든테가 엄선한 정보를 확인하세요.</p>
+
+          <article class="hero-banner">
+            <span class="pill">New Update</span>
+            <h2>이번 주 추천 공모전</h2>
+            <p>총 상금 5,000만원 규모의 AI 영상 페스티벌</p>
+            <button>지금 확인하기</button>
+          </article>
+
+          <div class="section-title-row">
+            <h3>🔥 마감 임박 추천 공모전</h3>
+            <a href="#contestsPage" class="more-link" data-jump="contests">더보기</a>
+          </div>
+          <div id="urgentCards" class="h-scroll"></div>
+
+          <div class="section-title-row">
+            <h3>📚 공식 AI 툴 가이드</h3>
+          </div>
+          <div id="homeToolCards" class="tool-grid"></div>
+        </section>
+
+        <section id="contestsPage" class="page-section">
+          <h1>AI 콘텐츠 공모전</h1>
+          <p class="sub">창의성을 발휘할 수 있는 AI 기반 콘텐츠 공모전을 모아놓았습니다. 관심 있는 공모전을 선택하고 참여해보세요.</p>
+
+          <div class="view-switch">
+            <button id="listViewBtn" class="active">☷</button>
+            <button id="calendarViewBtn">🗓</button>
+          </div>
+
+          <article class="quick-card">
+            <h4>일주일 안에 마감되는 공모전 모음</h4>
+            <button id="focusUrgentBtn">확인하기</button>
+          </article>
+
+          <section class="preset-card">
+            <div class="preset-head"><strong>프리셋</strong><span>⌃</span></div>
+            <div class="chip-row">
+              <button class="chip-btn">공모전 처음인</button>
+              <button class="chip-btn">이미지 공모전</button>
+              <button class="chip-btn">음악 공모전</button>
+              <button class="chip-btn">해외 공모전</button>
+              <button class="chip-btn">곧 마감되는</button>
+              <button class="chip-btn">북마크만</button>
+            </div>
+          </section>
+
+          <section class="filters">
+            <input id="searchInput" type="search" placeholder="공모전 제목 / 주최 검색" />
+            <select id="statusFilter">
+              <option value="all">모집 상태 전체</option>
+              <option value="모집중">모집중</option>
+              <option value="마감 임박">마감 임박</option>
+              <option value="마감">마감</option>
+            </select>
+            <select id="typeFilter">
+              <option value="all">유형 전체</option>
+              <option value="AI 영상">AI 영상</option>
+              <option value="AI 이미지">AI 이미지</option>
+              <option value="AI 모델·데이터">AI 모델·데이터</option>
+            </select>
+          </section>
+
+          <section id="listPanel">
+            <div id="contestCards" class="cards"></div>
+          </section>
+
+          <section id="calendarPanel" class="calendar-panel hidden">
+            <p>캘린더 뷰</p>
+            <h2 id="calendarTitle">2026년 2월</h2>
+            <div class="calendar-controls">
+              <button id="prevMonthBtn">이전</button>
+              <button id="todayBtn">오늘</button>
+              <button id="nextMonthBtn">다음</button>
+            </div>
+            <div class="weekdays"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div>
+            <div id="calendarGrid" class="calendar-grid"></div>
+          </section>
+          <p class="copyright">© 2025 GordonTe.</p>
+        </section>
+
+        <section id="toolsPage" class="page-section">
+          <h1>AI 도구 가이드</h1>
+          <p class="sub">창작에 필요한 최고의 AI 도구들을 한눈에 확인하고 활용해보세요.</p>
+          <input id="toolSearch" type="search" placeholder="🔍 도구 이름, 키워드 검색..." />
+          <div class="chip-row">
+            <button class="chip-btn active" data-tool-filter="all">전체</button>
+            <button class="chip-btn" data-tool-filter="영상">Video</button>
+            <button class="chip-btn" data-tool-filter="이미지">Image</button>
+            <button class="chip-btn" data-tool-filter="오디오">Audio</button>
+            <button class="chip-btn" data-tool-filter="기획">LLM</button>
+          </div>
+          <div id="toolCards" class="tools-list"></div>
+        </section>
+
+        <section id="aboutPage" class="page-section">
+          <h1>About&Spport</h1>
+          <h3>ℹ️ About</h3>
+          <article class="about-card">
+            <p>AI 공모전과 도구 정보를 한곳에 모은, 고든테의 큐레이션 보드입니다.</p>
+            <p>좋은 기회를 더 빠르게 발견하도록 돕습니다.</p>
+          </article>
+
+          <h3>🎧 Contact</h3>
+          <div class="contact-grid">
+            <article class="about-card"><strong>이메일 문의</strong><p>help@gordonte.ai</p></article>
+            <article class="about-card"><strong>오픈채팅 / 디스코드</strong><p>실시간 소통하기</p></article>
+          </div>
+          <article class="about-card social"><strong>SOCIAL MEDIA</strong><p>Instagram · Twitter</p></article>
+
+          <h3>❓ FAQ</h3>
+          <details class="faq-item"><summary>공모전 등록은 어떻게 하나요?</summary><p>현재는 자동 수집이 기본이며, 추후 제보 폼을 제공할 예정입니다.</p></details>
+          <details class="faq-item"><summary>유료 서비스인가요?</summary><p>기본 공모전 탐색과 도구 가이드는 무료입니다.</p></details>
+        </section>
+      </main>
+
+    </div>
+
+    <aside id="detailDrawer" class="drawer hidden" aria-hidden="true">
+      <button id="closeDrawer" class="close">✕</button>
+      <div id="detailContent"></div>
+    </aside>
+
+    <script src="script.js"></script>
+  </body>
+</html>
