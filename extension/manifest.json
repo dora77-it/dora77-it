@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Gordonte's AI Cabinet - Whisk Automator",
+  "description": "Free Chrome extension MVP for Whisk prompt automation and auto download.",
+  "version": "0.1.0",
+  "permissions": ["storage", "downloads", "tabs", "scripting"],
+  "host_permissions": ["https://labs.google/*"],
+  "action": {
+    "default_title": "Gordonte's AI Cabinet",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://labs.google/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

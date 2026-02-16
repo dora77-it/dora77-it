@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gordonte's AI Cabinet</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="app">
+      <h1>Gordonte's AI Cabinet</h1>
+      <p class="subtitle">무료 Whisk 자동화 MVP</p>
+
+      <label>프롬프트 (한 줄 = 1개)</label>
+      <textarea id="prompts" rows="8" placeholder="a duck in cyberpunk city\nminimalist poster"></textarea>
+
+      <details>
+        <summary>고급 설정 (선택)</summary>
+        <label>입력창 셀렉터</label>
+        <input id="inputSelector" value="textarea" />
+
+        <label>생성 버튼 셀렉터</label>
+        <input id="generateSelector" value="button[type='submit']" />
+
+        <label>결과 이미지 셀렉터</label>
+        <input id="imageSelector" value="img" />
+
+        <label>타임아웃(ms)</label>
+        <input id="timeoutMs" type="number" value="120000" />
+
+        <label>딜레이(ms)</label>
+        <input id="delayMs" type="number" value="1500" />
+      </details>
+
+      <div class="actions">
+        <button id="save">설정 저장</button>
+        <button id="start" class="primary">시작</button>
+        <button id="stop">중지</button>
+      </div>
+
+      <pre id="status">대기 중...</pre>
+    </main>
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>
