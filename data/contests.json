@@ -1,0 +1,62 @@
+[
+  {
+    "name": "메디힐 AI 영상 공모전",
+    "host": "메디힐",
+    "type": "AI 영상",
+    "category": "광고·브랜디드",
+    "status": "모집중",
+    "startDate": "",
+    "deadline": "",
+    "region": "한국",
+    "language": "한국어",
+    "reward": "공식 요강 참고",
+    "format": "영상",
+    "target": "일반인",
+    "tags": [
+      "#자동생성",
+      "#AI영상"
+    ],
+    "note": "메디힐에서 진행하는 AI 영상 공모전입니다. 접수 일정과 제출 규격은 공식 페이지에서 확인하세요.",
+    "link": "https://example.com/mediheal-ai"
+  },
+  {
+    "name": "무쏘맨 AI AWARDS",
+    "host": "KGM",
+    "type": "AI 영상",
+    "category": "광고·브랜디드",
+    "status": "모집중",
+    "startDate": "",
+    "deadline": "",
+    "region": "한국",
+    "language": "한국어",
+    "reward": "공식 요강 참고",
+    "format": "영상",
+    "target": "일반인",
+    "tags": [
+      "#자동생성",
+      "#브랜디드"
+    ],
+    "note": "브랜드 테마 기반 AI 영상 어워즈입니다. 공모 요강, 제출 링크, 일정은 주최 측 공지를 확인하세요.",
+    "link": "https://example.com/mussoman-awards"
+  },
+  {
+    "name": "Kaggle AI Competition",
+    "host": "Kaggle",
+    "type": "AI 모델·데이터",
+    "category": "데이터·모델",
+    "status": "모집중",
+    "startDate": "",
+    "deadline": "",
+    "region": "글로벌",
+    "language": "영어",
+    "reward": "Prize 및 랭킹",
+    "format": "모델/코드/리포트",
+    "target": "개발자/리서처",
+    "tags": [
+      "#자동생성",
+      "#Kaggle"
+    ],
+    "note": "Kaggle에서 수시로 열리는 AI 대회 목록입니다. 상세 조건은 대회 페이지에서 확인하세요.",
+    "link": "https://www.kaggle.com/competitions"
+  }
+]
