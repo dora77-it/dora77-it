@@ -61,5 +61,4 @@ export default function MapView({ days }: { days: Day[] }) {
     });
   }, [days]);
 
-  return <div ref={mapRef} className="w-full h-full" />;
-}
+  return <div ref={mapRef} style={{ width: '100%', height: '100%' }} />;}
