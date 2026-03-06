@@ -2,8 +2,8 @@
 
 import { Loader } from "@googlemaps/js-api-loader";
 import { useEffect, useRef } from "react";
-
 import type { Day } from "@/types/itinerary";
+import styles from "./MapView.module.css";
 
 export default function MapView({ days }: { days: Day[] }) {
   const mapRef = useRef<HTMLDivElement | null>(null);
@@ -14,7 +14,6 @@ export default function MapView({ days }: { days: Day[] }) {
     }
 
     const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
-
     if (!apiKey) {
       mapRef.current.innerHTML = "Google Maps API 키가 설정되지 않았습니다.";
       return;
@@ -27,25 +26,46 @@ export default function MapView({ days }: { days: Day[] }) {
 
     loader.load().then(() => {
       const firstSlot = days[0]?.slots[0];
-      const center = firstSlot ? firstSlot.location : { lat: 35.6812, lng: 139.7671 };
+      const center = firstSlot
+        ? firstSlot.location
+        : { lat: 35.6812, lng: 139.7671 };
 
-      const map = new window.google.maps.Map(mapRef.current as HTMLElement, {
-        center,
-        zoom: 12,
-      });
+      const map = new window.google.maps.Map(
+        mapRef.current as HTMLElement,
+        {
+          center,
+          zoom: 12,
+          mapTypeControl: true,
+          fullscreenControl: true,
+          streetViewControl: true,
+        }
+      );
 
       const path: google.maps.LatLngLiteral[] = [];
+      const infoWindows: google.maps.InfoWindow[] = [];
 
       days.forEach((day) => {
         day.slots.forEach((slot) => {
           const position = slot.location;
           path.push(position);
 
-          new window.google.maps.Marker({
+          const marker = new window.google.maps.Marker({
             position,
             map,
             title: slot.title,
+            animation: window.google.maps.Animation.DROP,
           });
+
+          const infoWindow = new window.google.maps.InfoWindow({
+            content: `<div class="${styles.markerInfo}"><h3>${slot.title}</h3><p>${slot.description}</p><p class="${styles.timeInfo}">${slot.timeOfDay}</p></div>`,
+          });
+
+          marker.addListener("click", () => {
+            infoWindows.forEach((iw) => iw.close());
+            infoWindow.open(map, marker);
+          });
+
+          infoWindows.push(infoWindow);
         });
       });
 
@@ -53,12 +73,18 @@ export default function MapView({ days }: { days: Day[] }) {
         new window.google.maps.Polyline({
           path,
           map,
-          strokeColor: "#1d4ed8",
+          strokeColor: "#6366f1",
           strokeOpacity: 0.8,
           strokeWeight: 3,
+          geodesic: true,
         });
       }
     });
   }, [days]);
 
-  return <div ref={mapRef} style={{ width: '100%', height: '100%' }} />;}
+  return (
+    <div className={styles.container}>
+      <div ref={mapRef} className={styles.mapContainer} />
+    </div>
+  );
+}
