@@ -30,8 +30,7 @@ export default function MapView({ days }: { days: Day[] }) {
         ? firstSlot.location
         : { lat: 35.6812, lng: 139.7671 };
 
-      const map = new window.google.maps.Map(
-        mapRef.current as HTMLElement,
+const map = new (window as any).google.maps.Map(        mapRef.current as HTMLElement,
         {
           center,
           zoom: 12,
