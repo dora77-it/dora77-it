@@ -1,6 +1,7 @@
 import DayList from "@/components/DayList";
 import MapView from "@/components/MapView";
 import type { Day } from "@/types/itinerary";
+import styles from "./itinerary.module.css";
 
 type SearchParams = {
   destination?: string;
@@ -16,7 +17,6 @@ export default function ItineraryPage({
   searchParams: SearchParams;
 }) {
   const { destination, startDate, endDate } = searchParams;
-
   const days: Day[] = [
     {
       dayIndex: 1,
@@ -39,19 +39,22 @@ export default function ItineraryPage({
   ];
 
   return (
-    <main className="min-h-screen flex flex-col p-4">
-      <header className="mb-4">
-        <h1 className="text-2xl font-bold">{destination || "여행지"} 일정 결과</h1>
-        <p className="text-sm text-gray-600">
-          {startDate || "출발일"} ~ {endDate || "도착일"}
-        </p>
+    <main className={styles.container}>
+      <header className={styles.header}>
+        <div className={styles.headerContent}>
+          <div>
+            <h1 className={styles.title}>{destination || "여행지"} 일정 결과</h1>
+            <p className={styles.subtitle}>
+              {startDate || "출발일"} ~ {endDate || "도착일"}
+            </p>
+          </div>
+        </div>
       </header>
-
-      <section className="flex flex-1 gap-4">
-        <div className="w-1/3 border rounded p-2 overflow-y-auto">
+      <section className={styles.section}>
+        <div className={styles.dayListWrapper}>
           <DayList days={days} />
         </div>
-        <div className="flex-1 border rounded" style={{ minHeight: 480 }}>
+        <div className={styles.mapWrapper}>
           <MapView days={days} />
         </div>
       </section>
