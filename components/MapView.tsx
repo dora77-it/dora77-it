@@ -27,7 +27,7 @@ export default function MapView({ days }: { days: Day[] }) {
         maxZoom: 19,
       }).addTo(map);
 
-      const markers: L.Marker[]] = [];
+      const markers: L.Marker[] = [];
       const pathCoords: [number, number][] = [];
 
       // Add markers for each slot
