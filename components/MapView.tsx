@@ -30,7 +30,8 @@ export default function MapView({ days }: { days: Day[] }) {
         ? firstSlot.location
         : { lat: 35.6812, lng: 139.7671 };
 
-const map = new (window as unknown as typeof window & { google: { maps: any } })ogle.maps.Map(        mapRef.current as HTMLElement,
+// @ts-expect-error - Google Maps loaded dynamically
+      const map = new (window as any))ogle.maps.Map(        mapRef.current as HTMLElement,
         {
           center,
           zoom: 12,
