@@ -31,6 +31,7 @@ export default function MapView({ days }: { days: Day[] }) {
         : { lat: 35.6812, lng: 139.7671 };
 
 // @ts-expect-error - Google Maps loaded dynamically
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const map = new (window as any).google.maps.Map(    mapRef.current as HTMLElement,        {
           center,
           zoom: 12,
