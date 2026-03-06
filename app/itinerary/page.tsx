@@ -17,7 +17,31 @@ export default function ItineraryPage({
   searchParams: SearchParams;
 }) {
   const { destination, startDate, endDate } = searchParams;
-  const days: Day[] = [
+
+    // 목적지에 따른 샘플 데이터
+    const isOsaka = destination?.includes('오사카') || destination?.includes('고베');
+
+    const days: Day[] = isOsaka ? [
+          {
+                  dayIndex: 1,
+                  date: startDate,
+                  slots: [
+                            {
+                                        timeOfDay: "morning",
+                                        title: "오사카 성",
+                                        description: "일본 3대 성 중 하나로 역사적인 명소",
+                                        location: { lat: 34.6873, lng: 135.5262 },
+                                      },
+                            {
+                                        timeOfDay: "afternoon",
+                                        title: "도톤보리",
+                                        description: "오사카의 가장 번화한 쇼핑가로 네온 간판과 먹거리가 가득",
+                                        location: { lat: 34.6686, lng: 135.5023 },
+                                      },
+                          ],
+                },
+        ] :
+        [
     {
       dayIndex: 1,
       date: startDate,
@@ -36,7 +60,7 @@ export default function ItineraryPage({
         },
       ],
     },
-  ];
+  ];;
 
   return (
     <main className={styles.container}>
